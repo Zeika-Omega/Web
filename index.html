@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACLEDA Bank Interface</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hanuman:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & BASIC SETUP --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', 'Hanuman', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER SECTION --- */
+        header {
+            width: 100%;
+        }
+
+        /* Top Bar (Darkest Blue) */
+        .top-bar {
+            background-color: #0d1e42; /* Deep Navy */
+            color: #fff;
+            padding: 0 40px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #d4a026; /* Goldish color for logo */
+        }
+        
+        /* Simulating the logo text/icon */
+        .logo-area span { color: #fff; margin-right: 5px; }
+        .logo-area img { height: 30px; margin-left: 10px; } 
+
+        .top-nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .top-nav-links a:hover { color: #d4a026; }
+        
+        .flag-icon { font-size: 16px; }
+
+        /* Secondary Nav (Lighter Blue) */
+        .main-nav {
+            background-color: #122550; /* Slightly lighter navy */
+            color: #fff;
+            padding: 0 40px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 30px;
+            text-transform: uppercase;
+        }
+
+        .nav-items li {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .nav-items li:after {
+            content: "v"; /* Simple dropdown arrow simulation */
+            font-size: 8px;
+            margin-top: 2px;
+        }
+        
+        .nav-items li:last-child:after { content: ""; } /* No arrow for Investor Relations */
+
+        .exchange-rate {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 400;
+        }
+        
+        .rate-pair { color: #5cb85c; }
+        .rate-down { color: #d9534f; }
+
+        /* --- MAIN CONTENT / CARDS --- */
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .promo-card {
+            width: 100%;
+            max-width: 550px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* The Visual Box part of the card */
+        .visual-box {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* keep it square */
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .visual-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Styling for Left Card (Phone Safety) */
+        .safety-card {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); /* Blue to Purple gradient */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .safety-card h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            position: absolute;
+            top: 40px;
+        }
+
+        /* Placeholder for the 3D illustration */
+        .illustration-placeholder {
+            margin-top: 40px;
+            font-size: 80px;
+        }
+
+        /* Styling for Right Card (Merchant) */
+        .merchant-card {
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        
+        .merchant-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- READ MORE LINK --- */
+        .read-more-link {
+            margin-top: 15px;
+            color: #5aa6d6;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .read-more-link:hover {
+            color: #0d1e42;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="top-bar">
+            <div class="logo-area">
+                <span>អេស៊ីលីដា</span> <span style="color: #d4a026; margin-left: 5px;">ACLEDA BANK</span>
+                </div>
+            
+            <div class="top-nav-links">
+                <a href="#">Special Offers <i style="font-style:normal">🏷️</i></a>
+                <a href="#">About ACLEDA ⌄</a>
+                <a href="#">Search 🔍</a>
+                <a href="#" style="color: #d4a026;">Internet Banking ⌄</a>
+                <span class="flag-icon">🇰🇭</span>
+            </div>
+        </div>
+
+        <div class="main-nav">
+            <ul class="nav-items">
+                <li>Personal</li>
+                <li>Business</li>
+                <li>Cards</li>
+                <li>Digital</li>
+                <li>Investor Relations</li>
+            </ul>
+
+            <div class="exchange-rate">
+                <span>EXCHANGE</span>
+                <span style="display:flex; align-items:center; gap:5px;">
+                    🇦🇺 AUD
+                </span>
+                <span class="rate-pair">2,561.02</span>
+                <span>-</span>
+                <span class="rate-down">2,732.32</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <div class="promo-card">
+            <div class="visual-box safety-card">
+                <img src="./IMG/1.jpg" alt="Merchant Promotion">
+            </div>
+            <a href="#" class="read-more-link">Read More &rightarrow;</a>
+        </div>
+
+        <div class="promo-card">
+            <div class="visual-box merchant-card">
+                <img src="./IMG/2.jpg" alt="Merchant Promotion">
+            </div>
+            <a href="#" class="read-more-link">Read More &rightarrow;</a>
+        </div>
+
+    </main>
+
+</body>
+</html>
